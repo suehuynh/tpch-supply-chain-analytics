@@ -5,8 +5,8 @@ def create_dataset(fct_shipping, dim_supplier):
         )
         .rename(
             {
-                "comment_supplier": "supplier_comment",
-                "name_supplier" : "supplier_name"
+                "comment_supplier": "supplier_comment", 
+                "name" : "supplier_name"
             }
         )
     )

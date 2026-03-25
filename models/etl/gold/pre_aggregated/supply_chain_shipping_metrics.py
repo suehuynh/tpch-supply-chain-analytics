@@ -9,21 +9,21 @@ def create_dataset(wide_supplier):
     )
 
     # Aggregate by Supplier
-    agg_supplier = df_with_length.group_by("supplier_name").agg([
+    agg_supplier = wide_shipping_length.group_by("supplier_name").agg([
         pl.col("shipping_length").max().alias("max_days"),
         pl.col("shipping_length").min().alias("min_days"),
         pl.col("shipping_length").mean().alias("avg_days")
     ]).sort("avg_days")
 
     # Aggregate by Shipping Mode
-    agg_shipmode = df_with_length.group_by("shipmode").agg([
+    agg_shipmode = wide_shipping_length.group_by("shipmode").agg([
         pl.col("shipping_length").max().alias("max_days"),
         pl.col("shipping_length").min().alias("min_days"),
         pl.col("shipping_length").mean().alias("avg_days")
     ]).sort("avg_days")
 
     # Aggregate by Nation
-    agg_nation = df_with_length.group_by("nation_name").agg([
+    agg_nation = wide_shipping_length.group_by("nation_name").agg([
         pl.col("shipping_length").max().alias("max_days"),
         pl.col("shipping_length").min().alias("min_days"),
         pl.col("shipping_length").mean().alias("avg_days")
