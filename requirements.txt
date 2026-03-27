@@ -6,3 +6,4 @@ pyarrow==17.0.0
 black==24.8.0
 dbt-duckdb==1.8.3
 apache-airflow==2.10.2
+pandas
