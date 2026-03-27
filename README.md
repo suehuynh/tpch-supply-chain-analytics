@@ -2,7 +2,7 @@
 
 An end-to-end Data Engineering pipeline built to analyze supply chain efficiency using the TPC-H dataset. This project implements a **Medallion Architecture** (Bronze, Silver, Gold) to transform raw relational data into actionable business insights.
 
-`![Dashboard Preview](dashboard_preview.png)`
+![Dashboard Preview](dashboard_preview.png)
 
 ## Tech Stack
 * **Database:** [DuckDB](https://duckdb.org/) (In-process OLAP database)
