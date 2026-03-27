@@ -1,14 +1,15 @@
 from etl.bronze import load_nation, load_orders, load_supplier, load_lineitem
 from etl.silver import dim_supplier, fct_lineitem, fct_orders, fct_shipping
 from etl.gold.obt import wide_supplier
-from etl.gold.pre_aggregated import supply_chain_shipping_metrics
+from etl.gold.pre_aggregated import metrics_by_supplier, metrics_by_nation, metrics_by_shipmode
 
 def create_shipping_metrics():
     # Create necessary bronze table
-    nation_df = load_nation.create_dataset()
-    orders_df = load_orders.create_dataset()
-    supplier_df = load_supplier.create_dataset()
-    lineitem_df = load_lineitem.create_dataset()
+    source_database = "tpch.db"
+    nation_df = load_nation.create_dataset(table_name="nation", source_database=source_database)
+    orders_df = load_orders.create_dataset(table_name="orders", source_database=source_database)
+    supplier_df = load_supplier.create_dataset(table_name="supplier", source_database=source_database)
+    lineitem_df = load_lineitem.create_dataset(table_name="lineitem", source_database=source_database)
 
     # Create silver tables
     dim_supplier_df = dim_supplier.create_dataset(
@@ -30,12 +31,23 @@ def create_shipping_metrics():
     )
 
     # Create gold pre-aggregated tables
-    shipping_metrics_df = supply_chain_shipping_metrics.create_dataset(
+    agg_supp = metrics_by_supplier.create_dataset(
         wide_supplier_df
     )
 
-    return shipping_metrics_df
+    agg_mode = metrics_by_shipmode.create_dataset(
+        wide_supplier_df
+    )
+
+    agg_nat = metrics_by_nation.create_dataset(
+        wide_supplier_df
+    )
+
+    return agg_supp, agg_mode, agg_nat
+
+
 
 if __name__ == "__main__":
     # Print output
-    print(create_shipping_metrics().limit(10))
+    agg_supp, agg_mode, agg_nat = create_shipping_metrics()
+    print(agg_supp, agg_mode, agg_nat)
