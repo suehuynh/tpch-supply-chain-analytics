@@ -17,9 +17,9 @@ def generate_dashboard():
             <h2>Avg Shipping by Nation</h2>
             {df_nation.to_pandas().to_html(classes='table table-striped')}
             <h2>Avg Shipping by Shipping Mode</h2>
-            {df_supplier.to_pandas().to_html(classes='table table-dark')}
+            {df_supplier.to_pandas().to_html(classes='ttable table-striped')}
             <h2>SAvg Shipping by Suppliers</h2>
-            {df_supplier.to_pandas().to_html(classes='table table-dark')}
+            {df_supplier.to_pandas().to_html(classes='table table-striped')}
         </body>
     </html>
     """
