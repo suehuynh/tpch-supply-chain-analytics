@@ -15,7 +15,10 @@ x-airflow-common:
 
   volumes:
     - ./dags:/opt/airflow/dags
-    - ./de_project:/opt/airflow/de_project
+    - ./models:/opt/airflow/dags
+    - ./utils:/opt/airflow/utils
+    - ./tpch.db:/opt/airflow/tpch.db
+    - ./tpch-supply-chain-analytics:/opt/airflow/tpch-supply-chain-analytics
     - ./data:/opt/airflow/data
     - ./visualization:/opt/airflow/visualization
     - ./logs:/opt/airflow/logs
@@ -24,6 +27,7 @@ x-airflow-common:
     - ./temp:/opt/airflow/temp
     - ./migrations:/opt/airflow/migrations
     - ./setup:/opt/airflow/setup
+    
   user: "${AIRFLOW_UID:-50000}:${AIRFLOW_GID:-0}"
   depends_on:
     postgres:
