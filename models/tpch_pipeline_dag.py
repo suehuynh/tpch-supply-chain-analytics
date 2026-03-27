@@ -27,3 +27,8 @@ with DAG(
     stop_pipeline = EmptyOperator(task_id='stop_pipeline')
 
     create_shipping_metrics_task() >> stop_pipeline
+    @task
+    def generate_dashboard_task():
+        generate_dashboard()
+    
+    create_shipping_metrics_task() >> update_dashboard_task() >> stop_pipeline

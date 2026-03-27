@@ -2,6 +2,7 @@ from etl.bronze import load_nation, load_orders, load_supplier, load_lineitem
 from etl.silver import dim_supplier, fct_lineitem, fct_orders, fct_shipping
 from etl.gold.obt import wide_supplier
 from etl.gold.pre_aggregated import metrics_by_supplier, metrics_by_nation, metrics_by_shipmode
+import duckdb
 
 def create_shipping_metrics():
     # Create necessary bronze table
@@ -43,6 +44,13 @@ def create_shipping_metrics():
         wide_supplier_df
     )
 
+    with duckdb.connect(source_database) as con:
+        con.execute("CREATE SCHEMA IF NOT EXISTS gold")
+        # DuckDB can "see" the Polars variables agg_supp, agg_mode, etc.
+        con.execute("CREATE OR REPLACE TABLE gold.agg_supplier AS SELECT * FROM agg_supp")
+        con.execute("CREATE OR REPLACE TABLE gold.agg_shipmode AS SELECT * FROM agg_mode")
+        con.execute("CREATE OR REPLACE TABLE gold.agg_nation AS SELECT * FROM agg_nat")
+    
     return agg_supp, agg_mode, agg_nat
 
 
