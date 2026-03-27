@@ -11,22 +11,32 @@ def generate_dashboard():
     # Convert to HTML 
     html_content = f"""
     <html>
-        <head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"></head>
+        <head>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+            <style>
+                body {{ padding: 40px; background-color: #f8f9fa; }}
+                h2 {{ margin-top: 30px; color: #0d6efd; }}
+                table {{ background-color: white; }}
+            </style>
+        </head>
         <body class="container">
-            <h1>Supply Chain Dashboard</h1>
+            <h1 class="mb-4">🚢 Supply Chain Dashboard</h1>
+            
             <h2>Avg Shipping by Nation</h2>
-            {df_nation.to_pandas().to_html(classes='table table-striped', index=False, justify='left')}
+            {df_nation.to_pandas().to_html(classes='table table-striped table-hover', index=False, justify='left')}
+            
             <h2>Avg Shipping by Shipping Mode</h2>
-            {df_shipmode.to_pandas().to_html(classes='ttable table-striped', index=False, justify='left')}
+            {df_shipmode.to_pandas().to_html(classes='table table-striped table-hover', index=False, justify='left')}
+            
             <h2>Avg Shipping by Suppliers</h2>
-            {df_supplier.to_pandas().to_html(classes='table table-striped', index=False, justify='left')}
+            {df_supplier.to_pandas().to_html(classes='table table-striped table-hover', index=False, justify='left')}
         </body>
     </html>
     """
     
     with open("dashboard.html", "w") as f:
         f.write(html_content)
-    print("🚀 Dashboard created: dashboard.html")
+    print("Dashboard created: dashboard.html")
 
 if __name__ == "__main__":
     generate_dashboard()

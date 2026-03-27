@@ -1,10 +1,18 @@
 
     <html>
-        <head><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"></head>
+        <head>
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+            <style>
+                body { padding: 40px; background-color: #f8f9fa; }
+                h2 { margin-top: 30px; color: #0d6efd; }
+                table { background-color: white; }
+            </style>
+        </head>
         <body class="container">
-            <h1>Supply Chain Dashboard</h1>
+            <h1 class="mb-4">🚢 Supply Chain Dashboard</h1>
+            
             <h2>Avg Shipping by Nation</h2>
-            <table border="1" class="dataframe table table-striped">
+            <table border="1" class="dataframe table table-striped table-hover">
   <thead>
     <tr style="text-align: left;">
       <th>nation_name</th>
@@ -76,8 +84,9 @@
     </tr>
   </tbody>
 </table>
+            
             <h2>Avg Shipping by Shipping Mode</h2>
-            <table border="1" class="dataframe ttable table-striped">
+            <table border="1" class="dataframe table table-striped table-hover">
   <thead>
     <tr style="text-align: left;">
       <th>shipmode</th>
@@ -131,8 +140,9 @@
     </tr>
   </tbody>
 </table>
+            
             <h2>Avg Shipping by Suppliers</h2>
-            <table border="1" class="dataframe table table-striped">
+            <table border="1" class="dataframe table table-striped table-hover">
   <thead>
     <tr style="text-align: left;">
       <th>supplier_name</th>
