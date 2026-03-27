@@ -21,9 +21,9 @@ def generate_dashboard():
     </html>
     """
     
-    with open("index.html", "w") as f:
+    with open("dashboard.html", "w") as f:
         f.write(html_content)
-    print("🚀 Dashboard created: index.html")
+    print("🚀 Dashboard created: dashboard.html")
 
 if __name__ == "__main__":
     generate_dashboard()
