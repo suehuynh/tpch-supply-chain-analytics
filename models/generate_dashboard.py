@@ -15,11 +15,11 @@ def generate_dashboard():
         <body class="container">
             <h1>Supply Chain Dashboard</h1>
             <h2>Avg Shipping by Nation</h2>
-            {df_nation.to_pandas().to_html(classes='table table-striped')}
+            {df_nation.to_pandas().to_html(classes='table table-striped', index=False, justify='left')}
             <h2>Avg Shipping by Shipping Mode</h2>
-            {df_supplier.to_pandas().to_html(classes='ttable table-striped')}
-            <h2>SAvg Shipping by Suppliers</h2>
-            {df_supplier.to_pandas().to_html(classes='table table-striped')}
+            {df_shipmode.to_pandas().to_html(classes='ttable table-striped', index=False, justify='left')}
+            <h2>Avg Shipping by Suppliers</h2>
+            {df_supplier.to_pandas().to_html(classes='table table-striped', index=False, justify='left')}
         </body>
     </html>
     """
