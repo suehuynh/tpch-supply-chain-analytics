@@ -22,7 +22,7 @@ To ensure data quality and traceability, the project is organized into three dis
     * `agg_shipmode`: Performance metrics by transportation method.
     * `agg_supplier`: Performance metrics by supplier.
 
-## 🚀 Key Features
+## Key Features
 * **Automated ETL:** Python-based scripts that handle the extraction and transformation without manual SQL overhead.
 * **Lock-Safe Connections:** Implemented context managers (`with duckdb.connect`) to prevent database file locking during concurrent tasks.
 * **Dynamic Dashboard:** A custom-built HTML reporting tool that generates visual summaries of the Gold-layer metrics.
@@ -33,16 +33,17 @@ The pipeline generates a `dashboard.html` featuring:
 * **Supplier Benchmarking:** Ranking the slowest suppliers based on real shipping data.
 * **Shipping Mode Benchmarking:** Ranking the slowest shipping mode based on shipping length.
 
-## 🏃 How to Run
+## How to Run
 1. **Install Dependencies:**
-   ```bash
+   ```
+   bash
    pip install -r requirements.txt
    ```
-2. **Run the Pipeline:**
+3. **Run the Pipeline:**
   ```bash
    python3 run_pipeline.py
    ```
-3. **Generate Report:**
+4. **Generate Report:**
   ```bash
    python3 models/generate_dashboard.py
    ```
